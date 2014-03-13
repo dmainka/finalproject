@@ -1,0 +1,20 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "Nile.com", root_path, id: "logo" %>
+      <nav>
+        <ul class="nav nav-justified">
+        </ul>
+        <ul class="nav pull-right">
+          <li id="fat-menu" class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Department<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+            </ul>
+          </li>
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Help", help_path %></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

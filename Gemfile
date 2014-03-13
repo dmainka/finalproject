@@ -2,10 +2,12 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
+gem 'bootstrap-sass'
 
 group :development, :test do
-  gem 'sqlite3', '1.3.8'
-  gem 'rspec-rails', '2.13.1'
+  gem 'sqlite3'
+  gem 'rspec-rails'
+  gem 'guard-rspec'
 end
 
 group :test do
@@ -45,7 +47,7 @@ group :production do
 end
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
 # gem 'unicorn'
