@@ -13,7 +13,7 @@ describe "StaticPages" do
     before { visit root_path }
 
     let(:heading)    { 'Welcome to Nile.com' }
-    let(:page_title) { 'Home' }
+    let(:page_title) { '' }
 
     it_should_behave_like "all static pages"
   end

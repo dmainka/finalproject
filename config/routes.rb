@@ -3,6 +3,9 @@ Finalproject::Application.routes.draw do
   root  'static_pages#home'
 
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
+  # resources :cart_items
+  # resources :orders, only: [:new, :index, :create, :show]
 
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
