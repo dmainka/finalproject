@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def index
     if current_user.admin?
-      @users = user.paginate(page: params[:page])
+      @users = User.paginate(page: params[:page])
     else
       flash[:error] = "You are not authorized to view this page"
       redirect_to root_path
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = user.find(params[:id])
+    @user = User.find(params[:id])
     if (!current_user.admin? && !current_user?(@user))
       flash[:error] = "You are not authorized to view this user!"
       redirect_to root_path
@@ -22,11 +22,11 @@ class UsersController < ApplicationController
   end
 
   def new
-    # @user = user.new
+    @user = User.new
   end
 
   def create
-    @user = user.new(user_params)
+    @user = User.new(user_params)
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to Nile.com!"
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = user.find(params[:id])
+    @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    user.find(params[:id]).destroy
+    User.find(params[:id]).destroy
     flash[:success] = "user deleted."
     redirect_to users_url
   end
