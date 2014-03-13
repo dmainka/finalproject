@@ -5,8 +5,8 @@ class UsersController < ApplicationController
   before_action :admin_user,         only: [:destroy]
 
   def index
-    if (signed_in? && current_user.admin?)
-      @users = User.paginate(page: params[:page])
+    if (signed_in? && current_user.admin)
+      @users = User.all.paginate(page: params[:page], :per_page => 10)
     else
       if (!signed_in?)
         flash[:error] = "You must be signed in to view this page"
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if (!current_user.admin? && !current_user?(@user))
+    if (signed_in? && !current_user.admin && !current_user?(@user))
       flash[:error] = "You are not authorized to view this user!"
       redirect_to root_path
     end
