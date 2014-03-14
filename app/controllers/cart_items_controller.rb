@@ -6,7 +6,7 @@ class CartItemsController < ApplicationController
   # GET /cart_items
   # GET /cart_items.json
   def index
-    @cart_items = CartItem.where("user_id = ?", current_user).paginate(page: params[:page], :per_page => 10)
+    @cart_items = CartItem.where("user_id = ?", current_user)#.paginate(page: params[:page], :per_page => 10)
   end
 
   # GET /cart_items/1
