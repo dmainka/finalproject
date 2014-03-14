@@ -2,10 +2,16 @@ Finalproject::Application.routes.draw do
 
   root  'static_pages#home'
 
+  match 'cart_items/empty', to: 'cart_items#empty_cart', via: 'delete'
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  # resources :cart_items
-  # resources :orders, only: [:new, :index, :create, :show]
+  resources :products, only: [:index, :show]
+  resources :books, only: [:index, :show]
+  resources :songs, only: [:index, :show]
+  resources :cart_items
+  resources :orders, only: [:new, :index, :create, :show]
+  resources :vendors, only: [:show]
 
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'

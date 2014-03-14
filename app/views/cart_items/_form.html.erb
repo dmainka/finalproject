@@ -1,0 +1,12 @@
+<%= form_for @cart_item do |f| %>
+  <%= render :partial => 'shared/error_messages', :locals => {:object => @cart_item} %>
+
+  <%= f.label :quantity %>
+  <%= f.text_field :quantity %>
+  <%= link_to image_tag(@cart_item.product.image_url,  width: "50", height: "50"), @cart_item.product %>
+  <%= link_to @cart_item.product.name, @cart_item.product %> @
+  <%= number_to_currency(@cart_item.product.price) %>
+
+  <br><br>
+  <%= f.submit "Update", class: "btn btn-primary" %>
+<% end %>
