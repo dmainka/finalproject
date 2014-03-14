@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="span8 offset2">
+    <h5 style="display:inline">Order Number: </h5><h4 style="display:inline; color:#0088cc"><%= @order.id %></h4>
+    <br>
+    <h5 style="display:inline">Order Date: </h5><h4 style="display:inline; color:#0088cc"><%= @order.order_date.localtime.strftime("%B %d, %Y at %I:%M %p") %></h4>
+    <br>
+    <h5 style="display:inline">Name: </h5><h4 style="display:inline; color:#0088cc"><%= @order.ship_to_name %></h4>
+    <br>
+    <h5 style="display:inline">Ship to Address: </h5><h4 style="display:inline; color:#0088cc"><%= @order.ship_to_address %></h4>
+    <br>
+    <h5 style="display:inline">Payment Type: </h5><h4 style="display:inline; color:#0088cc"><%= @order.payment_type %></h4>
+    <br><br>
+
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading"><h5>Product details</h5></div>
+    <div class="panel-body">
+      <p></p>
+    </div>
+
+    <table class="table">
+      <thead>
+        <th>Quantity</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Price</th>
+      </thead>
+      <tbody>
+        <!-- Detail rows -->
+        <% @order_items.each do |order_item| %>
+          <tr>
+            <td><%= order_item.quantity %></td>
+            <td><%= link_to image_tag(order_item.product.image_url,  width: "50", height: "50"), order_item.product %></td>
+            <td><%= link_to order_item.product.name, order_item.product %></td>
+            <td><%= number_to_currency(order_item.product.price) %></td>
+          </tr>
+        <% end %>
+        <!-- Total row -->
+        <tr>
+          <td>Total:</td>
+          <td></td>
+          <td></td>
+          <td><%= number_to_currency(order.total) %></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  </div>
+</div>

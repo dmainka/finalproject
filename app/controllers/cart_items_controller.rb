@@ -84,7 +84,7 @@ class CartItemsController < ApplicationController
   # DELETE /cart_items/1
   # DELETE /cart_items/1.json
   def destroy
-    @cartItem.destroy
+    @cart_item.destroy
     redirect_to(cart_items_path, :notice => "Item was successfully deleted from your cart.")
 
     # @cart_item.destroy

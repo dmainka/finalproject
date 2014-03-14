@@ -1,34 +1,7 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, 'Order Details') %>
+<h1>Order Details</h1>
 
-<p>
-  <strong>Customer:</strong>
-  <%= @order.customer_id %>
-</p>
+<ul class="order">
+  <%= render @order %>
+</ul>
 
-<p>
-  <strong>Order date:</strong>
-  <%= @order.order_date %>
-</p>
-
-<p>
-  <strong>Total:</strong>
-  <%= @order.total %>
-</p>
-
-<p>
-  <strong>Ship to name:</strong>
-  <%= @order.ship_to_name %>
-</p>
-
-<p>
-  <strong>Ship to address:</strong>
-  <%= @order.ship_to_address %>
-</p>
-
-<p>
-  <strong>Payment type:</strong>
-  <%= @order.payment_type %>
-</p>
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>

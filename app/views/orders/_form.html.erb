@@ -1,41 +1,24 @@
-<%= form_for(@order) do |f| %>
-  <% if @order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@order) do |f| %>
 
-      <ul>
-      <% @order.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <%= render :partial => 'shared/error_messages', :locals => {:object => @order} %>
 
-  <div class="field">
-    <%= f.label :customer_id %><br>
-    <%= f.number_field :customer_id %>
+      <div class="field">
+        <%= f.label :ship_to_name %><br />
+        <%= f.text_field :ship_to_name, :size => 40 %>
+      </div>
+      <div class="field">
+        <%= f.label :ship_to_address %><br />
+        <%= f.text_area :ship_to_address, :rows => 3, :cols => 40 %>
+      </div>
+      <div class="field">
+        <%= f.label :payment_type %><br />
+        <%= f.select :payment_type, Order::PAYMENT_TYPES, :prompt => 'Select a payment method' %>
+      </div>
+      <div class="actions">
+        <%= f.submit 'Place Order', class: "btn btn-primary", :confirm => "Are you sure you want to place this order?"  %>
+      </div>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :order_date %><br>
-    <%= f.datetime_select :order_date %>
-  </div>
-  <div class="field">
-    <%= f.label :total %><br>
-    <%= f.text_field :total %>
-  </div>
-  <div class="field">
-    <%= f.label :ship_to_name %><br>
-    <%= f.text_field :ship_to_name %>
-  </div>
-  <div class="field">
-    <%= f.label :ship_to_address %><br>
-    <%= f.text_area :ship_to_address %>
-  </div>
-  <div class="field">
-    <%= f.label :payment_type %><br>
-    <%= f.text_field :payment_type %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

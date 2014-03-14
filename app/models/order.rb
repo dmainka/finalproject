@@ -6,7 +6,7 @@ class Order < ActiveRecord::Base
 
   PAYMENT_TYPES = [ "Check", "Credit card", "Purchase order" ]
 
-  validates :order_date, :name, :ship_to_address, :payment_type, :presence => true
+  validates :order_date, :ship_to_name, :ship_to_address, :payment_type, :presence => true
   validates :payment_type, :inclusion => PAYMENT_TYPES
 
 end

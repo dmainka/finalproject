@@ -1,37 +1,27 @@
-<h1>Listing orders</h1>
+<% provide(:title, 'Orders') %>
+<h1>Your Orders (<%= @orders.count %>)</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Customer</th>
-      <th>Order date</th>
+<% if @orders.count == 0 %>
+
+  <li><h4>You've placed no prior orders.</h4></li>
+
+<% else %>
+
+  <table class="table">
+    <thead>
+      <th>Order Number</th>
+      <th>Date</th>
       <th>Total</th>
-      <th>Ship to name</th>
-      <th>Ship to address</th>
-      <th>Payment type</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= link_to order.id, order %></td>
+          <td><%= order.order_date.localtime.strftime("%B %d, %Y at %I:%M %p") %></td>
+          <td><%= number_to_currency(order.total) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.customer_id %></td>
-        <td><%= order.order_date %></td>
-        <td><%= order.total %></td>
-        <td><%= order.ship_to_name %></td>
-        <td><%= order.ship_to_address %></td>
-        <td><%= order.payment_type %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Order', new_order_path %>
+<% end %>
