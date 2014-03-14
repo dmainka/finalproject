@@ -1,4 +1,4 @@
-class Book < ActiveRecord::Base
+class Book < Product
 
   belongs_to :product, :dependent => :destroy
 

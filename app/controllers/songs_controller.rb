@@ -8,7 +8,7 @@ class SongsController < ApplicationController
     #the following doesn't work as it needs a collection of products
     # @songs = Song.all.paginate(page: params[:page], :per_page => 10)
     department_id = Department.find_by(:name => 'Songs')
-    @songs = Product.where("department_id = ?", department_id).paginate(page: params[:page], :per_page => 10)
+    @songs = Product.search(params[:search]).where("department_id = ?", department_id).paginate(page: params[:page], :per_page => 10)
   end
 
   # GET /songs/1

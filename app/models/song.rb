@@ -1,4 +1,4 @@
-class Song < ActiveRecord::Base
+class Song < Product
 
   belongs_to :product, :dependent => :destroy
 

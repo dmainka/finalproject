@@ -1,4 +1,7 @@
 <% provide(:title, 'All Songs') %>
+
+<%= render partial: 'layouts/search', locals:{path: songs_path} %>
+
 <h1>All Songs</h1>
 
 <%= will_paginate %>

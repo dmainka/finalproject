@@ -8,7 +8,7 @@ class BooksController < ApplicationController
     #the following doesn't work as it needs a collection of products
     # @books = Book.all.paginate(page: params[:page], :per_page => 10)
     department_id = Department.find_by(:name => 'Books')
-    @books = Product.where("department_id = ?", department_id).paginate(page: params[:page], :per_page => 10)
+    @books = Product.search(params[:search]).where("department_id = ?", department_id).paginate(page: params[:page], :per_page => 10)
   end
 
   # GET /books/1

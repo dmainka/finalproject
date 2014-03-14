@@ -1,4 +1,7 @@
 <% provide(:title, 'All Books') %>
+
+<%= render partial: 'layouts/search', locals:{path: books_path} %>
+
 <h1>All Books</h1>
 
 <%= will_paginate %>
