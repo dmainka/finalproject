@@ -11,7 +11,7 @@ Finalproject::Application.routes.draw do
   resources :songs, only: [:index, :show]
   resources :cart_items
   resources :orders, only: [:new, :index, :create, :show]
-  resources :vendors, only: [:show]
+  resources :vendors, only: [:index, :show]
 
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'

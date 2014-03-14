@@ -6,6 +6,7 @@ class Product < ActiveRecord::Base
   belongs_to :vendor
   has_many :cart_items
   has_many :order_items
+  has_many :orders, :through => :order_items
 
   def Product.search(key)
     if (key)

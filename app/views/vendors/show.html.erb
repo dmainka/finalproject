@@ -6,9 +6,10 @@
 </p>
 
 <p>
-  <strong>Rating:</strong>
-  <%= @vendor.rating %>
+    <b> Vendor Avg Rating: </b>
+    <% @vendor.rating.times do %>
+      <i class="fa fa-star"></i>
+    <% end %>
 </p>
 
-<%= link_to 'Edit', edit_vendor_path(@vendor) %> |
 <%= link_to 'Back', vendors_path %>

@@ -1,6 +1,72 @@
 <% provide(:title, 'Help') %>
 <h1>Help</h1>
 <p>
-  Help page for Nile.com
+  Here I try to document the major functionality of my Web app.
 </p>
 
+<h4>Sign up, sign in and sign out</h4>
+<ol>
+  <li>Sign up</li>
+    <ul><li>You can sign up from the Home page or from a link in the Sign In screen.</li></ul>
+  <li>Sign in</li>
+    <ul><li>You can sign up as a new user or additionally Sign in using one of the following provided in the seeded DB:</li>
+      <ul><li><b>Email: </b>dmainka@gmail.com, <b>Password: </b>password (this is an admin user to see the additional functionality of an admin (viewing all users and deleting users)</li></ul>
+      <ul><li><b>Email: </b>customer1@example.com, <b>Password: </b>password (generic user)</li></ul>
+      <ul><li><b>Email: </b>customer2@example.com, <b>Password: </b>password (generic user)</li></ul>
+    </ul>
+  <li>Sign out</li>
+    <ul><li>Once signed in the Account drop down list in the NavBar has a Sign out option.</li></ul>
+</ol>
+
+<h4>User Profile</h4>
+<ol>
+  <li>View profile</li>
+    <ul><li>Once signed in the Account drop down list in the NavBar has a View Profile option.</li></ul>
+  <li>Edit profile</li>
+    <ul><li>Once signed in the Account drop down list in the NavBar has a Update Profile option.</li></ul>
+</ol>
+
+<h4>Shop</h4>
+<ol>
+  <li>Start shopping</li>
+    <ul><li>Once signed in the Department drop down list in the NavBar allows you to select a department to shop in.  Right now there is an All, Books and Songs department.  By selecting a department you'll be presented with a list of products for only that department.</li></ul>
+  <li>Get product details</li>
+    <ul>
+      <li>Once a list of products is shown you can click on the title, image or View Details button to get additional product details.</li>
+      <li>Different options and details are shown specific to the product type you are viewing.  For example a song presents an Audio preview player to hear a snippet for that song (right now just a single horse from w3schools.com noise but could link to actual song snippets if I had them; design supports this just don't have links (could have been a possible Mashup opportunity))</li>
+    </ul>
+  <li>Add to Cart</li>
+    <ul><li>Once a list of products is shown you can click on the Add to cart to get add 1 additional quantity of the specific product.  The Cart badge in the NavBar shows the total count of items in your cart.  This is saved from session to session.</li></ul>
+  <li>Viewing Cart Items</li>
+    <ul><li>By either clicking the Cart link in the NavBar or immediately after adding an item to your cart you will be presented with a list of all items you've added to your shopping cart.</li></ul>
+  <li>Editing Cart Items</li>
+    <ul><li>You can click the Edit link to adjust the quantity (only non-negative values allowed; entering 0 for the quantity will remove the item.</li></ul>
+  <li>Delete Cart Items</li>
+    <ul><li>You can click the Trash icon link to remove the item or adjust the quantity through the edit step above to 0.</li></ul>
+  <li>Empty Cart</li>
+    <ul><li>On the lower right hand side of the Cart view is a red Empty Cart button that will remove all items when clicked.</li></ul>
+  <li>Check out/Create an Order</li>
+    <ol>
+      <li>On the lower left hand side of the Cart view is a green Checkout button that will take you to the create Order screen.</li>
+      <li>You'll next be prompted to entering the name and place of shipment as well as payment type.</li>
+      <li>Clicking the blue Place Order button will place your order emptying all items in your Cart; after a quick confirmation check.</li>
+  </ol>
+</ol>
+
+<h4>Viewing Past Orders</h4>
+<ul>
+  <li>Once signed in the Account drop down list in the NavBar provides an option for Orders.  Clicking on that will present you with a list of past orders in desceding date order.</li>
+  <li>You can click on the Order Number link to see the Order detail (e.g., Ship to details, payment type, etc) and the items you purchased in that Order as well as the total for all the items.</li>
+  <li>You cannot edit or delete past orders.</li>
+</ul>
+
+<h4>Searching</h4>
+<ul>
+  <li>From any department you can search for a product by entering a search keyword(s) in the top Search box.  This is very basic searching functionality and only handles a single keyword phrase and only searches through the product names for a similar match.  After clicking the Search icon you'll be presented with all products within that department that match.</li>
+  <li>Clearing the Search box will present all products in that particular department.</li>
+</ul>
+
+<h4>Admin Functionality</h4>
+<ul>
+  <li>If you're logged in as a User with admin rights (e.g., email=dmainka@gmail.com, password=password) you'll have a Users link in the NavBar.  Clicking that will present you with a list of all Users from which you can view their details or delete a User other than yourself.</li>
+</ul>

@@ -38,6 +38,7 @@ all_vendor_data = [
   { :name => "Vendor2", :rating => 2 },
   { :name => "Vendor3", :rating => 3 },
   { :name => "Vendor4", :rating => 4 },
+  { :name => "Vendor5", :rating => 5 },
 ]
 
 Vendor.destroy_all

@@ -1,5 +1,57 @@
 <% provide(:title, 'About Us') %>
 <h1>About Us</h1>
 <p>
-  This is the About Us page for my final project.
+  Here I try to document whether or not I handled the Core and Elective Requirements and if so where you can see this.
 </p>
+
+<h3>Core Requirements</h3>
+<ol>
+  <li>Demonstrate best-practice use of Rails MVC architecture</li>
+    <ul><li>Tried to do this as well as possible.</li></ul>
+  <li>Use all four HTTP methods (GET, POST, PATCH, DELETE) at least once</li>
+    <ul><li>See User, CartItem where all of 4 these are handled.  Many other resources handle some of these too (see rake routes).</li></ul>
+  <li>Allow users to sign up, sign in, and sign out using cookie-based sessions.</li>
+    <ul><li>See User which does this.  You can use the functionality in the Sign In/Sign Out item in the NavBar.</li></ul>
+  <li>User accounts must use industry-strength password encryption or OAuth-compliant authentication data exchange.</li>
+    <ul><li>I used the bcrypt-ruby gem for this.</li></ul>
+    <ul><li>Additionally I did a lot of work to ensure proper authorization to view certain pages or take certain actions through a combination of limiting routes and authorization checks (e.g., a User can only view, edit or delete their orders/cart items for valid routes; I flash a Nice try! if someone tries to view or invoke a unauthorized action.</li></ul>
+  <li>Contain at least six models</li>
+    <ul><li>My project contains 9 models including User, Vendor, Product, Book, Song, CartItem, Order, OrderItem and Department.</li></ul>
+  <li>Contain at least one many-to-many association</li>
+    <ul><li>You can find one in the relationship between Orders and Products.  An order can contain many products and a product can be in many different orders.  The relationship is in the OrderItem model.  I could have implemented another by linking CartItems to Customers through a Cart object but opted not to create a Cart object as this seemed more natural as a one-to-many relationship.</li></ul>
+  <li>Use at least three model callbacks</li>
+      <ul><li>In the User model there are 2:
+        <p><code>before_save { self.email = email.downcase }</code></p>
+        <p><code>before_create :create_remember_token</code></p>
+      </li></ul>
+      <ul><li>And the Product model has another:
+          <p><code>before_destroy :ensure_not_referenced_by_any_cart_item</code></p>
+      </li></ul>
+  <li>Use at least three validation rules</li>
+      <ul><li>The User model itself has 3 validation rules (name, email &amp; password).  However there are many more in the othe models as well.</li></ul>
+  <li>Maintain HTTP session state (e.g. user authentication)</li>
+      <ul><li>I implemented this through a Sessions controller.  The create action authenticates &amp; signs the User in and the destroy action signs the User out.</li></ul>
+  <li>Use at least one controller filter action</li>
+      <ul><li>I do this in almost every controller.  Simplest example being the following typical use:  <code>before_action :set_product, only: [:show, :edit, :update, :destroy]</code></li> but I have many more which you can see in the controllers.</ul>
+  <li>Populate the database via seed data</li>
+      <ul><li>I did this and provide a seeds.rb file.  You can seed the data using rake db:seed.</li></ul>
+</ol>
+
+<h3>Elective components</h3>
+<ul>
+  <li>Use and demonstration of understanding of <b>at least one</b> of the following:</li>
+  <ol>
+    <li>Deployment to a live internet hosting service</li>
+      <ul><li>I deployed it through Heroku and you can view my project at: <a href="https://warm-oasis-5084.herokuapp.com">https://warm-oasis-5084.herokuapp.com</a></li></ul>
+    <li>Intelligent use Javascript or CoffeeScript to create a responsive user interface</li>
+      <ul><li>I didn't use either in my project although probably a couple of opportunities with editing cart items or potentially the search functionality.  Just didn't have time.</li></ul>
+    <li>Using Rails' built-in Test-Driven Development (TDD) tools. (Scaffold- generated tests will receive only partial credit).</li>
+      <ul><li>I did this fully for the Static pages and the User model through Rspec.  However I do acknowledge that much of this was taken and followed from the "Ruby on Rails Tutorial" by Michael Hartl.  Scaffolding tests were also stubbed out but I didn't do a lot beyond this.  My project does fail a lot of the tests (e.g., I don't provide routes for all actions the scaffolding by default tests) and should have been commented out or deleted if I'm not using them but chose to keep them for later reference and avoid all the painful re-coding if I ever wanted to go further with this project or use it as a base for something else.  I did indpendently build out a few of my own tests but didn't do a lot of this as time was limited.</li></ul>
+    <li>Advanced ActiveRecord (e.g. Scopes, Polymorphic Associations, STI)</li>
+      <ul><li>I looked at this seriously and was hopeful that I could use some of this in my project but in the end it just didn't seem like the right thing for my project.  For example, I have a base Product model and then have 2 more specific models for certain product types (Books and Songs).  These more specific types where to hold additional specific information beyond what a generic product would contain (Books have author and pages, and Songs have artist, album, time, snippet_url) and have unique views when you click on the view details link.  Was going to try STI or polymorphic associations but ended up rolling my own relationships (a one-to-one relationship between product and book or song through product_id).  This felt like a better choice giving a more normalized data structure (no null fields) than would have been the case with STI.  There may be many more data elements beyond the examples above so in the end I felt the STI wouldn't scale.  Don't know if my choice was good from a performance standpoint but in my simple/small database things seem reasonably responsive.</li></ul>
+    <li>Using ActionMailer to send email as a response to user action</li>
+      <ul><li>Attempting this now... we'll see if it gets included.</li></ul>
+    <li>Mashup of data from an external API (Facebook, Instagram, Google Maps, etc.)</li>
+      <ul><li>I didn't use mashups.</li></ul>
+  </ol>
+</ul>
