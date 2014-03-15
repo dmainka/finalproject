@@ -4,7 +4,6 @@ class CartItemsController < ApplicationController
   before_action :set_cart_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    @back_url = session[:my_previous_url]
     @cart_items = CartItem.where("user_id = ?", current_user)
   end
 
@@ -17,9 +16,6 @@ class CartItemsController < ApplicationController
   end
 
   def create
-    # Save prior location for Continue Shopping button
-    session[:last_product_page] = request.env['HTTP_REFERER'] || products_path
-
     # get all cart items for current_user
     cart_items = CartItem.where("user_id = ?", current_user);
 

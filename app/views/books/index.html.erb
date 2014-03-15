@@ -2,6 +2,8 @@
 
 <%= render partial: 'layouts/search', locals:{path: books_path} %>
 
+<% session[:last_product_page] = request.env['HTTP_REFERER'] || products_path %>
+
 <h1>All Books</h1>
 
 <%= will_paginate %>

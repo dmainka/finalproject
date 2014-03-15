@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show]
 
   def index
     @products = Product.search(params[:search]).paginate(page: params[:page], :per_page => 10)
