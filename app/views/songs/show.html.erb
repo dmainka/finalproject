@@ -8,7 +8,6 @@
       Your browser does not support this audio format.
     </audio>
 
-    <%= link_to "Back", session[:last_product_page], :class => "btn btn-primary" %>
     <% if signed_in? %>
       <%= link_to "Add to cart", cart_items_path(:product_id => @product), :method => :post, :class => "btn btn-success" %>
     <% else %>
