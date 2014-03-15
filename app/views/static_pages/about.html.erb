@@ -50,7 +50,7 @@
     <li>Advanced ActiveRecord (e.g. Scopes, Polymorphic Associations, STI)</li>
       <ul><li>I looked at this seriously and was hopeful that I could use some of this in my project but in the end it just didn't seem like the right thing for my project.  For example, I have a base Product model and then have 2 more specific models for certain product types (Books and Songs).  These more specific types where to hold additional specific information beyond what a generic product would contain (Books have author and pages, and Songs have artist, album, time, snippet_url) and have unique views when you click on the view details link.  Was going to try STI or polymorphic associations but ended up rolling my own relationships (a one-to-one relationship between product and book or song through product_id).  This felt like a better choice giving a more normalized data structure (no null fields) than would have been the case with STI.  There may be many more data elements beyond the examples above so in the end I felt the STI wouldn't scale.  Don't know if my choice was good from a performance standpoint but in my simple/small database things seem reasonably responsive.</li></ul>
     <li>Using ActionMailer to send email as a response to user action</li>
-      <ul><li>Attempting this now... we'll see if it gets included.</li></ul>
+      <ul><li>I built an ActionMailer to send an email confirmation after Sign up action and after the creation of an Order sending the user their order details.</li></ul>
     <li>Mashup of data from an external API (Facebook, Instagram, Google Maps, etc.)</li>
       <ul><li>I didn't use mashups.</li></ul>
   </ol>

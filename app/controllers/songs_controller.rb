@@ -2,8 +2,6 @@ class SongsController < ApplicationController
 
   before_action :set_song, only: [:show, :edit, :update, :destroy]
 
-  # GET /songs
-  # GET /songs.json
   def index
     #the following doesn't work as it needs a collection of products
     # @songs = Song.all.paginate(page: params[:page], :per_page => 10)
@@ -11,62 +9,12 @@ class SongsController < ApplicationController
     @songs = Product.search(params[:search]).where("department_id = ?", department_id).paginate(page: params[:page], :per_page => 10)
   end
 
-  # GET /songs/1
-  # GET /songs/1.json
   def show
     @product = Product.find(@song.product_id)
   end
 
-  # # GET /songs/new
-  # def new
-  #   @song = Song.new
-  # end
+   private
 
-  # # GET /songs/1/edit
-  # def edit
-  # end
-
-  # # POST /songs
-  # # POST /songs.json
-  # def create
-  #   @song = Song.new(song_params)
-
-  #   respond_to do |format|
-  #     if @song.save
-  #       format.html { redirect_to @song, notice: 'Song was successfully created.' }
-  #       format.json { render action: 'show', status: :created, location: @song }
-  #     else
-  #       format.html { render action: 'new' }
-  #       format.json { render json: @song.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # # PATCH/PUT /songs/1
-  # # PATCH/PUT /songs/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @song.update(song_params)
-  #       format.html { redirect_to @song, notice: 'Song was successfully updated.' }
-  #       format.json { head :no_content }
-  #     else
-  #       format.html { render action: 'edit' }
-  #       format.json { render json: @song.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # # DELETE /songs/1
-  # # DELETE /songs/1.json
-  # def destroy
-  #   @song.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to songs_url }
-  #     format.json { head :no_content }
-  #   end
-  # end
-
-  private
     # Use callbacks to share common setup or constraints between actions.
     def set_song
       @song = Song.find(params[:id])
@@ -76,4 +24,5 @@ class SongsController < ApplicationController
     def song_params
       params.require(:song).permit(:product_id, :artist, :album, :time, :snippet_url)
     end
+
 end

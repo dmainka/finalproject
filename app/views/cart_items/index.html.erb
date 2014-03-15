@@ -6,7 +6,9 @@
   <li><h4>Your cart is currently empty.</h4></li>
 
   <br>
-  <%= link_to 'Continue Shopping', products_path, class: 'btn btn-info' %>
+  <% if session[:last_product_page] %>
+    <%= link_to 'Continue Shopping', session[:last_product_page], class: 'btn btn-info' %>
+  <% end %>
 
 <% else %>
 
@@ -35,7 +37,9 @@
   <br>
   <div class="row">
     <%= link_to 'Checkout', new_order_path, class: 'btn btn-success' %>
-    <%= link_to 'Continue Shopping', products_path, class: 'btn btn-info' %>
+    <% if session[:last_product_page] %>
+      <%= link_to 'Continue Shopping', session[:last_product_page], class: 'btn btn-info' %>
+    <% end %>
     <%= link_to 'Empty cart', cart_items_empty_path, :method => :delete, :confirm => 'Are you sure?', class: 'pull-right btn btn-danger' %>
   </div>
 
